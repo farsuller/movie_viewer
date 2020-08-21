@@ -1,4 +1,4 @@
-package com.viewer.movieviewer.vo
+package com.viewer.movieviewer.model
 
 
 import com.google.gson.annotations.SerializedName

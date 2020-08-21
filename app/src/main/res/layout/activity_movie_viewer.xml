@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieViewerActivity">
+    tools:context=".ui.MovieViewerActivity">
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -15,29 +15,33 @@
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:layout_gravity="center"
+           android:id="@+id/network_progress_circular"
            android:visibility="gone"/>
 
        <TextView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
+           android:id="@+id/network_text_error"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
            android:layout_gravity="center"
            android:text="Connection Problem"
            android:visibility="gone"/>
 
        <ScrollView
+           android:id="@+id/network_scroll_view"
+           android:visibility="visible"
            app:layout_constraintTop_toTopOf="parent"
            android:layout_width="match_parent"
            android:layout_height="match_parent">
            
            <LinearLayout
                android:layout_width="match_parent"
-               android:layout_height="match_parent"
+               android:layout_height="wrap_content"
                android:orientation="vertical"
                android:id="@+id/linearDetails">
 
                <ImageView
                    android:layout_width="match_parent"
-                   android:layout_height="250dp"
+                   android:layout_height="230dp"
                    android:layout_gravity="center"
                    android:scaleType="matrix"
                    android:id="@+id/poster_landscape"
@@ -45,16 +49,31 @@
 
                <LinearLayout
                    android:layout_width="match_parent"
-                   android:layout_height="350dp"
+                   android:layout_height="380dp"
                    android:orientation="horizontal">
 
-                   <ImageView
-                       android:layout_width="160dp"
-                       android:layout_height="230dp"
-                       android:layout_gravity="center"
-                       android:scaleType="matrix"
-                       android:id="@+id/poster_portrait"
-                       />
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical"
+                       >
+
+                       <ImageView
+                           android:layout_width="160dp"
+                           android:layout_height="230dp"
+                           android:layout_gravity="center"
+                           android:scaleType="matrix"
+                           android:id="@+id/poster_portrait"
+                           />
+                       <Button
+                           android:id="@+id/button_seatmap"
+                           android:layout_width="150dp"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center"
+                           android:text="View Seat Map"
+                           />
+                   </LinearLayout>
+
 
                    <LinearLayout
                        android:layout_width="match_parent"
@@ -147,17 +166,7 @@
                            />
                    </LinearLayout>
 
-
-
                </LinearLayout>
-
-               <Button
-                   android:id="@+id/button_seatmap"
-                   android:layout_width="350dp"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center"
-                   android:text="View Seat Map"
-                   />
 
            </LinearLayout>
        </ScrollView>
