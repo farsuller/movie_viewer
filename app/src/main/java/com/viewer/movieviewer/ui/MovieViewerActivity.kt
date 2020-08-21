@@ -22,13 +22,11 @@ import kotlinx.android.synthetic.main.activity_movie_viewer.*
 class MovieViewerActivity : BaseActivity() {
 
     private lateinit var viewModel : MovieViewerViewModel
-    private lateinit var movieRepository: MovieDetailsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_viewer)
 
-        val apiService : MovieApi = MovieApiClient.getClient()
         movieRepository = MovieDetailsRepository(apiService)
 
         viewModel = getViewModel()

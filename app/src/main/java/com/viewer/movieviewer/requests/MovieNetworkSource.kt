@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.viewer.movieviewer.model.MovieDetails
+import com.viewer.movieviewer.model.ScheduleDetails
 import com.viewer.movieviewer.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -18,9 +19,13 @@ class MovieNetworkSource (
     get() = _networkState
 
     private val movieDetailResponse = MutableLiveData<MovieDetails>()
+    private val movieScheduleResponse = MutableLiveData<ScheduleDetails>()
 
     val provideMovieResponse: LiveData<MovieDetails>
-    get() = movieDetailResponse
+        get() = movieDetailResponse
+
+    val provideScheduleResponse: LiveData<ScheduleDetails>
+        get() = movieScheduleResponse
 
     fun fetchMovieDetails(){
 
@@ -31,6 +36,27 @@ class MovieNetworkSource (
                 apiService.getMovieDetails().subscribeOn(Schedulers.io())
                     .subscribe({
                       movieDetailResponse.postValue(it)
+                        _networkState.postValue(NetworkState.LOADED)
+                    },{
+
+                        _networkState.postValue(NetworkState.ERROR)
+                        Log.e("Movie Network Source", it.message.toString())
+                    })
+            )
+        }
+        catch (e: Exception){
+            Log.e("Movie Network Source", e.toString())
+        }
+    }
+
+    fun fetchMovieSchedules(){
+        _networkState.postValue(NetworkState.LOADING)
+
+        try{
+            compositeDisposable.add(
+                apiService.getScheduleDetails().subscribeOn(Schedulers.io())
+                    .subscribe({
+                        movieScheduleResponse.postValue(it)
                         _networkState.postValue(NetworkState.LOADED)
                     },{
 
