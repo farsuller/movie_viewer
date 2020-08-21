@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MovieViewerActivity">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <ProgressBar
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_gravity="center"
+           android:visibility="gone"/>
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_gravity="center"
+           android:text="Connection Problem"
+           android:visibility="gone"/>
+
+       <ScrollView
+           app:layout_constraintTop_toTopOf="parent"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="vertical"
+               android:id="@+id/linearDetails">
+
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="250dp"
+                   android:layout_gravity="center"
+                   android:scaleType="matrix"
+                   android:id="@+id/poster_landscape"
+                   />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="350dp"
+                   android:orientation="horizontal">
+
+                   <ImageView
+                       android:layout_width="160dp"
+                       android:layout_height="230dp"
+                       android:layout_gravity="center"
+                       android:scaleType="matrix"
+                       android:id="@+id/poster_portrait"
+                       />
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical"
+                       android:layout_margin="8dp">
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Name"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Movie Name"
+                           android:id="@+id/movie_name"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="4dp"
+                           android:text="Genre"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Movie Genre"
+                           android:id="@+id/movie_genre"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="4dp"
+                           android:text="Advisory Rating"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="G"
+                           android:id="@+id/movie_advisory"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="4dp"
+                           android:text="Duration"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Hours"
+                           android:id="@+id/movie_duration"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="4dp"
+                           android:text="Release Date"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Date"
+                           android:id="@+id/movie_release"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="4dp"
+                           android:text="Synopsis"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Lorem opsimum"
+                           android:id="@+id/movie_synopsis"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:paddingTop="4dp"
+                           android:text="Casts"
+                           />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Castings"
+                           android:id="@+id/movie_casts"
+                           />
+                   </LinearLayout>
+
+
+
+               </LinearLayout>
+
+               <Button
+                   android:id="@+id/button_seatmap"
+                   android:layout_width="350dp"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:text="View Seat Map"
+                   />
+
+           </LinearLayout>
+       </ScrollView>
+   </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
