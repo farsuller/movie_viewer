@@ -29,6 +29,12 @@
             android:layout_height="wrap_content"
             android:text="Glorietta 4"
             />
+
+        <Spinner
+            android:id="@+id/schedule_cinema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp" />
     </LinearLayout>
 
         <LinearLayout
@@ -38,24 +44,25 @@
 
             <Spinner
                 android:id="@+id/schedule_date"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="2dp"
                 />
 
             <Spinner
-                android:id="@+id/schedule_cinema"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp" />
-
-            <Spinner
                 android:id="@+id/schedule_time"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp" />
+                android:layout_margin="2dp" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dates"
+            android:id="@+id/tv_dates"
+            />
 
     </LinearLayout>
 

@@ -11,8 +11,6 @@ import com.viewer.movieviewer.base.BaseActivity
 import com.viewer.movieviewer.model.MovieDetails
 import com.viewer.movieviewer.repository.MovieDetailsRepository
 import com.viewer.movieviewer.repository.NetworkState
-import com.viewer.movieviewer.requests.MovieApi
-import com.viewer.movieviewer.requests.MovieApiClient
 import com.viewer.movieviewer.util.Constants.Companion.LANDSCAPE_ID
 import com.viewer.movieviewer.util.Constants.Companion.PORTRAIT_ID
 import com.viewer.movieviewer.util.Constants.Companion.POSTER_BASE_URL
@@ -23,11 +21,13 @@ class MovieViewerActivity : BaseActivity() {
 
     private lateinit var viewModel : MovieViewerViewModel
 
+    private lateinit var movieCast: ArrayList<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_viewer)
 
         movieRepository = MovieDetailsRepository(apiService)
+        movieCast = ArrayList()
 
         viewModel = getViewModel()
         viewModel.movieDetails.observe(this, Observer {
@@ -56,7 +56,7 @@ class MovieViewerActivity : BaseActivity() {
         movie_release.text = it.releaseDate
         movie_synopsis.text = it.synopsis
 
-        //PS for the sake on removing brackets and numbers in Casts name
+        //PS for the sake on removing brackets and numbers in Casts name and not going to loop in textview
         movie_casts.text = it.cast.toString().replace("[", "").replace("]", "").replace("1","")
 
 
