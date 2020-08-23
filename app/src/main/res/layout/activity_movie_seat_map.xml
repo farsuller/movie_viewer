@@ -160,6 +160,36 @@
             android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 
         <LinearLayout
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/ic_reserved"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/horline75"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <com.viewer.movieviewer.util.ZoomableViewGroup
+                android:id="@+id/seatMap_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent" android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/move_screen_tv"
+                        android:text="Movie Screen"
+                        android:gravity="center"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </com.viewer.movieviewer.util.ZoomableViewGroup>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/selectedSeats_layout"
             android:orientation="horizontal"
             android:gravity="center"
@@ -191,14 +221,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ProgressBar
-        android:visibility="visible"
-        android:id="@+id/loading_pb1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="48dp" android:layout_height="48dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
