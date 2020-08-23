@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.viewer.movieviewer.model.MovieDetails
 import com.viewer.movieviewer.model.ScheduleDetails
+import com.viewer.movieviewer.model.SeatMapDetails
 import com.viewer.movieviewer.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -20,12 +21,16 @@ class MovieNetworkSource (
 
     private val movieDetailResponse = MutableLiveData<MovieDetails>()
     private val movieScheduleResponse = MutableLiveData<ScheduleDetails>()
+    private val movieSeatMapResponse = MutableLiveData<SeatMapDetails>()
 
     val provideMovieResponse: LiveData<MovieDetails>
         get() = movieDetailResponse
 
     val provideScheduleResponse: LiveData<ScheduleDetails>
         get() = movieScheduleResponse
+
+    val provideSeatMapResponse: LiveData<SeatMapDetails>
+        get() = movieSeatMapResponse
 
     fun fetchMovieDetails(){
 
@@ -57,6 +62,26 @@ class MovieNetworkSource (
                 apiService.getScheduleDetails().subscribeOn(Schedulers.io())
                     .subscribe({
                         movieScheduleResponse.postValue(it)
+                        _networkState.postValue(NetworkState.LOADED)
+                    },{
+
+                        _networkState.postValue(NetworkState.ERROR)
+                        Log.e("Movie Network Source", it.message.toString())
+                    })
+            )
+        }
+        catch (e: Exception){
+            Log.e("Movie Network Source", e.toString())
+        }
+    }
+    fun fetchSeatMaps(){
+        _networkState.postValue(NetworkState.LOADING)
+
+        try{
+            compositeDisposable.add(
+                apiService.getSeatMapDetails().subscribeOn(Schedulers.io())
+                    .subscribe({
+                        movieSeatMapResponse.postValue(it)
                         _networkState.postValue(NetworkState.LOADED)
                     },{
 

@@ -3,6 +3,7 @@ package com.viewer.movieviewer.repository
 import androidx.lifecycle.LiveData
 import com.viewer.movieviewer.model.MovieDetails
 import com.viewer.movieviewer.model.ScheduleDetails
+import com.viewer.movieviewer.model.SeatMapDetails
 import com.viewer.movieviewer.requests.MovieApi
 import com.viewer.movieviewer.requests.MovieNetworkSource
 import io.reactivex.disposables.CompositeDisposable
@@ -27,5 +28,11 @@ class MovieDetailsRepository (private val apiService: MovieApi){
         movieNetworkSource.fetchMovieSchedules()
 
         return movieNetworkSource.provideScheduleResponse
+    }
+    fun fetchMovieSeatMap(compositeDisposable: CompositeDisposable) : LiveData<SeatMapDetails>{
+        movieNetworkSource = MovieNetworkSource(apiService, compositeDisposable)
+        movieNetworkSource.fetchSeatMaps()
+
+        return movieNetworkSource.provideSeatMapResponse
     }
 }

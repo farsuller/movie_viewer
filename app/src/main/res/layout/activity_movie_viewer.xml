@@ -59,17 +59,22 @@
                        >
 
                        <ImageView
+                           android:layout_marginTop="10dp"
+                           android:layout_marginBottom="10dp"
                            android:layout_width="160dp"
                            android:layout_height="230dp"
                            android:layout_gravity="center"
                            android:scaleType="matrix"
                            android:id="@+id/poster_portrait"
+
                            />
                        <Button
                            android:id="@+id/button_seatmap"
                            android:layout_width="150dp"
                            android:layout_height="wrap_content"
                            android:layout_gravity="center"
+                           android:textColor="@color/white"
+                           android:background="@drawable/button_seat_view"
                            android:text="View Seat Map"
                            />
                    </LinearLayout>

@@ -2,6 +2,7 @@ package com.viewer.movieviewer.requests
 
 import com.viewer.movieviewer.model.MovieDetails
 import com.viewer.movieviewer.model.ScheduleDetails
+import com.viewer.movieviewer.model.SeatMapDetails
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -17,4 +18,7 @@ interface MovieApi {
 
     @GET("schedule.json")
     fun getScheduleDetails(): Single<ScheduleDetails>
+
+    @GET("seatmap.json")
+    fun getSeatMapDetails(): Single<SeatMapDetails>
 }

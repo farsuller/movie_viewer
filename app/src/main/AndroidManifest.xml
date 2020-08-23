@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MovieSeatMapActivity"></activity>
+        <activity android:name=".ui.MovieScheduleSeatsActivity"></activity>
         <activity android:name=".ui.MovieViewerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

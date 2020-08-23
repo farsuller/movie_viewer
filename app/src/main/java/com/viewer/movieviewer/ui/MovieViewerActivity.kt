@@ -19,29 +19,27 @@ import kotlinx.android.synthetic.main.activity_movie_viewer.*
 
 class MovieViewerActivity : BaseActivity() {
 
-    private lateinit var viewModel : MovieViewerViewModel
 
-    private lateinit var movieCast: ArrayList<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_viewer)
 
         movieRepository = MovieDetailsRepository(apiService)
-        movieCast = ArrayList()
 
-        viewModel = getViewModel()
-        viewModel.movieDetails.observe(this, Observer {
+        viewModelMovieViwer = getViewModel()
+        viewModelMovieViwer.movieDetails.observe(this, Observer {
             bindUI(it)
         })
 
-        viewModel.networkState.observe(this, Observer {
+        viewModelMovieViwer.networkState.observe(this, Observer {
             network_progress_circular.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
             network_text_error.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
             network_scroll_view.visibility = if (it == NetworkState.ERROR) View.GONE else View.VISIBLE
         })
 
         button_seatmap.setOnClickListener{
-            startActivity(Intent(this, MovieSeatMapActivity::class.java))
+            startActivity(Intent(this, MovieScheduleSeatsActivity::class.java))
             overridePendingTransition(R.anim.activity_transition_fade_in, R.anim.activity_transition_fade_out)
         }
     }
